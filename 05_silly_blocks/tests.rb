@@ -1,9 +1,9 @@
-require "silly_blocks"
+require "./silly_blocks"
 
-describe "some silly block functions" do
+class Some_Silly_Block_Functions < Test::Unit::Testcase
 
-  describe "reverser" do
-    it "reverses the string returned by the default block" do
+  class Reverser < self
+    def reverses_the_string_returned_by_the_default_block
       result = reverser do
         "hello"
       end
@@ -38,7 +38,7 @@ describe "some silly block functions" do
       # end
     end
 
-    it "reverses each word in the string returned by the default block" do
+    def reverses_each_word_in_the_string_returned_by_the_default_block
       # Now edit the reverser method above to get this test to pass 
       result = reverser do
         "hello dolly"
@@ -47,8 +47,8 @@ describe "some silly block functions" do
     end
   end
 
-  describe "adder" do
-    it "adds one to the value returned by the default block" do
+  class Adder < self
+    def adds_one_to_the_value_returned_by_the_default_block
       adder do
         5
       end.should == 6
@@ -58,15 +58,15 @@ describe "some silly block functions" do
       # end
     end
 
-    it "adds 3 to the value returned by the default block" do
+    def adds_3_to_the_value_returned_by_the_default_block
       adder(3) do
         5
       end.should == 8
     end
   end
 
-  describe "repeater" do
-    it "executes the default block" do
+  class Repeater < self
+    def executes_the_default_block
       n = 2
       repeater do
         n += 3
@@ -74,7 +74,7 @@ describe "some silly block functions" do
       n.should == 4
     end
 
-    it "executes the default block 3 times" do
+    def executes_the_default_block_3_times
       n = 0
       repeater(3) do
         n += 1
@@ -82,7 +82,7 @@ describe "some silly block functions" do
       n.should == 3
     end
 
-    it "executes the default block 10 times" do
+    def executes_the_default_block_10_times
       n = 0
       repeater(10) do
         n += 1
