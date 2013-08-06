@@ -4,50 +4,50 @@
 #
 # Rule 2: If a word begins with a consonant sound, move it to the end of the word, and then add an "ay" sound to the end of the word.
 
-require "pig_latin"
+require "./pig_latin"
 
-describe "#translate" do
+class Translate < Test::Unit::TestCase
 
-  it "translates a word beginning with a vowel" do
+  def test_translates_a_word_beginning_with_a_vowel
     s = translate("apple")
     s.should == "appleay"
   end
 
-  it "translates a word beginning with a consonant" do
+  def test_translates_a_word_beginning_with_a_consonant
     s = translate("banana")
     s.should == "ananabay"
   end
 
-  it "translates a word beginning with two consonants" do
+  def test_translates_a_word_beginning_with_two_consonants
     s = translate("cherry")
     s.should == "errychay"
   end
 
-  it "translates two words" do
+  def test_translates_two_words
     s = translate("eat pie")
     s.should == "eatay iepay"
   end
 
-  it "translates a word beginning with three consonants" do
+  def test_translates_a_word_beginning_with_three_consonants
     translate("three").should == "eethray"
   end
 
-  it "counts 'sch' as a single phoneme" do
+  def test_counts_sch_as_a_single_phoneme
     s = translate("school")
     s.should == "oolschay"
   end
 
-  it "counts 'qu' as a single phoneme" do
+  def test_counts_qu_as_a_single_phoneme
     s = translate("quiet")
     s.should == "ietquay"
   end
 
-  it "counts 'qu' as a consonant even when it's preceded by a consonant" do
+  def test_counts_qu_as_a_consonant_even_when_its_preceded_by_a_consonant
     s = translate("square")
     s.should == "aresquay"
   end
 
-  it "translates many words" do
+  def test_translates_many_words
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"
   end
