@@ -1,56 +1,54 @@
 # TIP: Always, ALWAYS read through all of the tests before you even start writing any code.
 
+require "test/unit"
+
 # Again, a file with a specific name needs to be created, in this case "temperature.rb".
 # $ touch temperature.rb
-require "temperature.rb"
+require "./temperature.rb"
 
-# Now maybe we can talk more about the lines we ignored last problem.
-# describe is a method that takes a sting and a do-end block.
-# The method is given to use by RSpec.
-# The string should describe what is being tested in the do-end block. 
-describe "temperature conversion functions" do
+# Now maybe we can talk more about the line we ignored last problem.
+class Temperature_Conversion_Functions < Test::Unit::TestCase
 
-  describe "#ftoc" do
-
+  class FTOC_Method < self
     # "it" is also a method that is given to us by RSpec,
     # that also takes a string and a do-end block.
-    it "converts freezing temperature" do
+    def test_converts_freezing_temperature
       # Calling the method ftoc and passing in the integer 32 should return 0.
-      ftoc(32).should == 0
+      assert_equal 0, ftoc(32)
     end
 
     # The next three tests are similar, except different numbers are being passed in. 
-    it "converts boiling temperature" do
-      ftoc(212).should == 100
+    def test_converts_boiling_temperature
+      assert_equal 100, ftoc(212)
     end
 
-    it "converts body temperature" do
-      ftoc(98.6).should == 37
+    def test_converts_body_temperature
+      assert_equal 37, ftoc(98.6)
     end
 
-    it "converts arbitrary temperature" do
-      ftoc(68).should == 20
+    def test_converts_arbitrary_temperature
+      assert_equal 20, ftoc(68)
     end
-
   end
+
 
   # Now this set of tests describes a different method, 
   # not ftoc() anymore, but ctof(). 
-  describe "#ctof" do
 
-    it "converts freezing temperature" do
-      ctof(0).should == 32
+  class CTOF_Method < self
+    def test_converts_freezing_temperature
+      assert_equal 32, ctof(0)
     end
 
-    it "converts boiling temperature" do
-      ctof(100).should == 212
+    def test_converts_boiling_temperature
+      assert_equal 212, ctof(100)
     end
 
-    it "converts arbitrary temperature" do
-      ctof(20).should == 68
+    def test_converts_arbitrary_temperature
+      assert_equal 68, ctof(20)
     end
-
   end
+
 
 end
 
