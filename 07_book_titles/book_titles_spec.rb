@@ -1,6 +1,7 @@
-require 'book'
+require './book'
+require "test/unit"
 
-describe Book do
+class Book < Test::Unit::Testcase
 
   # Before every test...
   before do
@@ -8,8 +9,8 @@ describe Book do
     @book = Book.new
   end
 
-  describe 'title' do
-    it 'should capitalize the first letter' do
+  class Title < self
+    def Should_Capitalize_The_First_Letter
       # @book is a variable that was defined in the before do-end block.
       @book.title = "inferno"
       @book.title.should == "Inferno"
@@ -35,7 +36,7 @@ describe Book do
       # (i.e. w/o the equals sign)
     end
 
-    it 'should capitalize every word' do
+    def Should capitalize every word
       @book.title = "stuart little"
       @book.title.should == "Stuart Little"
     end
