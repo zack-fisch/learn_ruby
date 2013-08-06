@@ -1,13 +1,14 @@
-require "friend"
+require "./friend"
+require "test/unit"
 
-describe Friend do
+class Friend < Test::Unit::Testcase
 
-  it "says hello to someone" do
+  def test_says_hello_to_someone
     friend = Friend.new
-    friend.greet("Bob").should == "Hello, Bob!"
+    assert_equal "Hello, Bob!", greet("Bob")
   end
 
-  it "says hello to no one" do
+  def test_says_hello_to_no_one
     # Hint: remember default values?
     #
     # def greet(name = ?)
@@ -16,6 +17,6 @@ describe Friend do
     #
     # What should ? be equal to?
     friend = Friend.new
-    friend.greet.should == "Hello!"
+    assert_equal "Hello!", friend.greet
   end
 end

@@ -1,4 +1,5 @@
 require "./silly_blocks"
+require "test/unit"
 
 class Some_Silly_Block_Functions < Test::Unit::Testcase
 
@@ -7,7 +8,7 @@ class Some_Silly_Block_Functions < Test::Unit::Testcase
       result = reverser do
         "hello"
       end
-      result.should == "olleh"
+      assert_equal "olleh", result
       # You might be tempted to ask yourself what the hell is happening here.
       # Well no worries! Superman is here to the rescue!
       # (Heh, you probably don't even know whose written these comments.)
@@ -43,15 +44,15 @@ class Some_Silly_Block_Functions < Test::Unit::Testcase
       result = reverser do
         "hello dolly"
       end
-      result.should == "olleh yllod"
+      assert_equal "olleh yllod", result
     end
   end
 
   class Adder < self
     def adds_one_to_the_value_returned_by_the_default_block
-      adder do
+      assert_equal 6, adder do
         5
-      end.should == 6
+      end
       # def adder
       #   num = yield
       #   # what do you want do you with num?
@@ -59,9 +60,9 @@ class Some_Silly_Block_Functions < Test::Unit::Testcase
     end
 
     def adds_3_to_the_value_returned_by_the_default_block
-      adder(3) do
+      assert_equal 8, adder(3) do
         5
-      end.should == 8
+      end
     end
   end
 
@@ -71,7 +72,7 @@ class Some_Silly_Block_Functions < Test::Unit::Testcase
       repeater do
         n += 3
       end
-      n.should == 4
+      assert_equal 4, n
     end
 
     def executes_the_default_block_3_times
@@ -79,7 +80,7 @@ class Some_Silly_Block_Functions < Test::Unit::Testcase
       repeater(3) do
         n += 1
       end
-      n.should == 3
+      assert_equal 3, n
     end
 
     def executes_the_default_block_10_times
@@ -87,7 +88,7 @@ class Some_Silly_Block_Functions < Test::Unit::Testcase
       repeater(10) do
         n += 1
       end
-      n.should == 10
+      assert_equal 10, n
     end
 
   end

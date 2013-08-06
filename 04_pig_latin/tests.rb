@@ -5,51 +5,52 @@
 # Rule 2: If a word begins with a consonant sound, move it to the end of the word, and then add an "ay" sound to the end of the word.
 
 require "./pig_latin"
+require "test/unit"
 
 class Translate < Test::Unit::TestCase
 
   def test_translates_a_word_beginning_with_a_vowel
     s = translate("apple")
-    s.should == "appleay"
+    assert_equal "appleay", s
   end
 
   def test_translates_a_word_beginning_with_a_consonant
     s = translate("banana")
-    s.should == "ananabay"
+    assert_equal "ananabay", s
   end
 
   def test_translates_a_word_beginning_with_two_consonants
     s = translate("cherry")
-    s.should == "errychay"
+    assert_equal "errychay", s 
   end
 
   def test_translates_two_words
     s = translate("eat pie")
-    s.should == "eatay iepay"
+    assert_equal "eatay iepay", s
   end
 
   def test_translates_a_word_beginning_with_three_consonants
-    translate("three").should == "eethray"
+    assert_equal "eethray", translate("three")
   end
 
   def test_counts_sch_as_a_single_phoneme
     s = translate("school")
-    s.should == "oolschay"
+    assert_equal "oolschay", s
   end
 
   def test_counts_qu_as_a_single_phoneme
     s = translate("quiet")
-    s.should == "ietquay"
+    assert_equal "ietquay", s
   end
 
   def test_counts_qu_as_a_consonant_even_when_its_preceded_by_a_consonant
     s = translate("square")
-    s.should == "aresquay"
+    assert_equal "aresquay", s
   end
 
   def test_translates_many_words
     s = translate("the quick brown fox")
-    s.should == "ethay ickquay ownbray oxfay"
+    assert_equal s, "ethay ickquay ownbray oxfay"
   end
 
   # Extra challenges:
