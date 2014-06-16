@@ -30,7 +30,7 @@ describe "Simon says" do
 
   describe "repeat" do
     it "should repeat" do
-      repeat("hello").should == "hello hello"
+      repeat("hello", 2).should == "hello hello"
     end
 
     # Wait a second! How can you make the "repeat" method
