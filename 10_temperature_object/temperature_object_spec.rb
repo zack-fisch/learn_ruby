@@ -14,6 +14,7 @@ describe Temperature do
       it "at 50 degrees" do
         # A hash with the key "f" is being passed in.
         Temperature.new({:f => 50}).to_fahrenheit.should == 50
+
         # Remember, new is synonymous with initialize.
         # An example might help:
         # 
@@ -66,8 +67,8 @@ describe Temperature do
   describe "can be constructed via factory methods" do
 
     it "in degrees celsius" do
-      Temperature.in_celsius(50).to_celsius.should == 50
-      Temperature.in_celsius(50).to_fahrenheit.should == 122
+     Temperature.in_celsius(50).to_celsius.should == 50
+     Temperature.in_celsius(50).to_fahrenheit.should == 122
       # Nothing different is being achieved with these two lines,
       # they're just a different way of doing the same thing,
       # that requires you to write your code another way. 

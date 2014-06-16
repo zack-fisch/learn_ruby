@@ -1,6 +1,6 @@
 class Array
 	def sum
-		self.inject(0) {|total, num| total  += num}
+		self.inject(0) {|total, num| total  += num }
 	end
 
 	def square
